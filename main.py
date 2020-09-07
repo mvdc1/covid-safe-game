@@ -5,7 +5,7 @@ SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 425
 SCREEN_TITLE = "COVID-19 Safe Game"
 endx = range(520, 600)
-endy = range(0,420)
+endy = range(213-30,213+30)
 
 def time_format(sec):
     mins = sec // 60

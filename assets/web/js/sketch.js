@@ -15,11 +15,15 @@ async function getScores() {
     return sorted;
 }
 
-getScores().then(x => {
-    var str = "<ul>";
-    for(var i in x) {
-        str += '<li><i class="fas fa-long-arrow-alt-right fa-xs"></i> ' + x[i]["time"] + '</li>';
-    }
-    str += "</ul>";
-    document.getElementById("list").innerHTML = str;
-});
+function callScores() {
+    getScores().then(x => {
+        var str = "<ul>";
+        for(var i in x) {
+            str += '<li><i class="fas fa-long-arrow-alt-right fa-xs"></i> ' + x[i]['time'] + '</li>';
+        }
+        str += "</ul>";
+        document.getElementById("list").innerHTML = str;
+    });
+}
+
+var interval = window.setInterval(callScores, 5000);

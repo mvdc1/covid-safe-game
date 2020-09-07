@@ -7,4 +7,4 @@ This project was completed for VCE Applied Computing Unit 2 - Area of Study 1.
 
 # Usage
 1. Install arcade, `pip install arcade`
-2. Ensure current working directory is in the project and run main.py, `py main.py`.
+2. Ensure that the current working directory is in the project and run main.py, `py main.py`.

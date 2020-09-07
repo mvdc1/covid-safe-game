@@ -26,4 +26,4 @@ function callScores() {
     });
 }
 
-var interval = window.setInterval(callScores, 5000);
+var interval = window.setInterval(callScores, 3000);

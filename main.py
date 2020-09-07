@@ -163,7 +163,6 @@ if __name__ == "__main__":
             daemon.setDaemon(True)
             daemon.start()
             print(colours.reset + "Server started at " + colours.green + "localhost:3000" + colours.reset + ".")
-
             start = time.time()
             print("Building game.")
             main()

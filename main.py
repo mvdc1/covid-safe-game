@@ -12,10 +12,7 @@ def time_format(sec):
     sec = sec % 60
     hours = mins // 60
     mins = mins % 60
-    if hours == 0:
-        return "{0}:{1}".format(int(mins), round(sec, 2))
-    else:
-        return "{0}:{1}:{2}".format(int(hours), int(mins), round(sec, 2))
+    return "{0}:{1}:{2}".format(int(hours), int(mins), round(sec, 2))
 
 class MyGame(arcade.Window):
 
@@ -30,9 +27,9 @@ class MyGame(arcade.Window):
         self.set_mouse_visible(False)
 
     def setup(self):
-        self.background = arcade.load_texture("assets/map.png")
+        self.background = arcade.load_texture("../map.png")
         self.player_list = arcade.SpriteList()
-        self.player_sprite = arcade.Sprite("assets/spriteSTILL.png", SPRITE_SCALING_PLAYER)
+        self.player_sprite = arcade.Sprite("../spriteSTILL.png", SPRITE_SCALING_PLAYER)
         self.player_sprite.center_x = 50
         self.player_sprite.center_y = 50
         self.player_list.append(self.player_sprite)
@@ -52,23 +49,30 @@ class MyGame(arcade.Window):
             end = time.time()
             lapse = end - start
             print(colours.yellow + "Saving your result." + colours.reset)
+            os.chdir(os.path.dirname(os.getcwd()))
+            os.chdir(os.path.dirname(os.getcwd()))
             success = False
             try:
-                if os.path.exists("scores.json"):
-                    with open("scores.json") as scoresreader:
+                if os.path.exists("assets/web/scores.json"):
+                    with open("assets/web/scores.json") as scoresreader:
                         scores = json.load(scoresreader)
-                    with open("scores.json", "w") as scoresfile:
-                        scores.append({"time": time_format(lapse), "user": os.getenv("username")})
-                        json.dump(scores, scoresfile, indent=4, sort_keys=True)
+                    if len(scores) <= 15:
+                        with open("assets/web/scores.json", "w") as scoresfile:
+                            scores.append({"time": time_format(lapse), "total": int(end-start)})
+                            json.dump(scores, scoresfile, indent=4, sort_keys=True)
+                    else:
+                        with open("assets/web/scores.json", "w") as scoresfile:
+                            json.dump([{"time": time_format(lapse), "total": int(end-start)}], scoresfile, indent=4, sort_keys=True)
                 else:
-                    with open("scores.json", "w") as newf:
-                        json.dump([{"time": time_format(lapse), "user": os.getenv("username")}], newf, indent=4, sort_keys=True)
-                    with open("scores.json") as scoresreader:
+                    with open("assets/web/scores.json", "w") as newf:
+                        json.dump([{"time": time_format(lapse), "total": int(end-start)}], newf, indent=4, sort_keys=True)
+                    with open("assets/web/scores.json") as scoresreader:
                         scores = json.load(scoresreader)
                 success = True
             except:
                 print("Your score could not be saved.")
             if success:
+                os.chdir("assets/web")
                 print(colours.lblue + "Your score has been saved successfully." + colours.reset)
                 if len(scores) >= 2:
                     arcade.close_window()
@@ -110,6 +114,7 @@ def main():
     arcade.run()
 
 def server():
+    os.chdir("assets/web")
     handler = http.server.SimpleHTTPRequestHandler
     with socketserver.TCPServer(("", 3000), handler) as httpd:
         httpd.serve_forever()
@@ -144,16 +149,16 @@ if __name__ == "__main__":
                         clearlastline = ""
             except KeyError:
                 class colours:
-                        red = ""
-                        black = ""
-                        white = ""
-                        lblue = ""
-                        purple = ""
-                        pink = ""
-                        green = ""
-                        yellow = ""
-                        reset = ""
-                        clearlastline = ""
+                    red = ""
+                    black = ""
+                    white = ""
+                    lblue = ""
+                    purple = ""
+                    pink = ""
+                    green = ""
+                    yellow = ""
+                    reset = ""
+                    clearlastline = ""
             daemon = threading.Thread(name="daemon server", target=server)
             daemon.setDaemon(True)
             daemon.start()

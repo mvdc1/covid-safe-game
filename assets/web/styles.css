@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Kite+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap');
+
+*, html, body {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('background.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+
+h1[id="main"] {
+    color: #f06e23;
+    font-family: 'Kite One', sans-serif;
+    margin-left: 22%;
+    margin-top: 8%;
+    font-size: 250%;
+    cursor: default;
+    transition: 0.3s;
+}
+
+h1[id="main"]:hover {
+    color: #ffffff;
+    transition: 0.5s;
+}
+
+p {
+    color: #ffffff;
+    cursor: default;
+    font-size: 130%;
+    margin-left: 22%;
+    margin-top: 1.5%;
+    max-width: 25%;
+    font-family: 'Assistant', sans-serif;
+}
+
+ul {
+    color: #ffffff;
+    font-size: 120%;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-left: 27%;
+    font-family: 'Assistant', sans-serif;
+}
+
+div[id="desc"] {
+    float: right;
+    width: 65%;
+    margin-top: 4%;
+    margin-right: -30%;
+}
+
+a[id="github"] {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 110%;
+    margin-left: 22%;
+    color: #bebebe;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+a[id="github"]:hover {
+    color: #ffffff;
+    transition: 0.5s;
+}

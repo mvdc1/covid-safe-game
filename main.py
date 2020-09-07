@@ -110,7 +110,6 @@ def main():
     arcade.run()
 
 def server():
-    os.chdir("/web")
     handler = http.server.SimpleHTTPRequestHandler
     with socketserver.TCPServer(("", 3000), handler) as httpd:
         httpd.serve_forever()

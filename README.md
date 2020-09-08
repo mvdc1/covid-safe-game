@@ -1,5 +1,5 @@
 # covid-safe-game
-### A game to teach the precautions of COVID-19.
+### A game to interact with in attempt to educate users the precautions of COVID-19.
 This project was completed for VCE Applied Computing Unit 2 - Area of Study 1.
 
 ## Prerequisites

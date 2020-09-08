@@ -3,8 +3,8 @@
 This project was completed for VCE Applied Computing Unit 2 - Area of Study 1.
 
 ## Prerequisites
-**-** System running Windows x32, Windows x86, or Windows x64.\
-**-** Python v3.7+ (https://www.python.org/).\
+**-** System running Windows x32, Windows x86, or Windows x64.
+**-** Python v3.7+ (https://www.python.org/).
 **-** Arcade v2.4 (https://arcade.academy/).
 
 ## Usage

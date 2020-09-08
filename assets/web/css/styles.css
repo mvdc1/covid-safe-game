@@ -47,6 +47,7 @@ p {
 
 ul {
     color: #ffffff;
+    position: fixed;
     font-size: 120%;
     font-weight: bold;
     margin-top: 2%;

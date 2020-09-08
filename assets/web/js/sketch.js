@@ -19,11 +19,11 @@ function callScores() {
     getScores().then(x => {
         var str = "<ul>";
         for(var i in x) {
-            str += '<li><i class="fas fa-long-arrow-alt-right fa-xs"></i> ' + x[i]['time'] + '</li>';
+            str += '<li><i class="fas fa-long-arrow-alt-right fa-xs"></i>' + x[i]['time'] + '</li>';
         }
         str += "</ul>";
         document.getElementById("list").innerHTML = str;
     });
 }
 
-var interval = window.setInterval(callScores, 3000);
+var interval = window.setInterval(callScores, 2000);

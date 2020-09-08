@@ -56,7 +56,7 @@ class MyGame(arcade.Window):
                 if os.path.exists("assets/web/scores.json"):
                     with open("assets/web/scores.json") as scoresreader:
                         scores = json.load(scoresreader)
-                    if len(scores) <= 15:
+                    if len(scores) <= 13:
                         with open("assets/web/scores.json", "w") as scoresfile:
                             scores.append({"time": time_format(lapse), "total": int(end-start)})
                             json.dump(scores, scoresfile, indent=4, sort_keys=True)

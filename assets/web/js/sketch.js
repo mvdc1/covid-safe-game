@@ -9,7 +9,8 @@ function sortByProperty(property){
 }
 
 async function getScores() {
-    const res = await fetch("scores.json");
+    var cd = Date.now();
+    const res = await fetch("scores.json?date=" + cd, {headers: {"Cache-Control": "no-cache"}}, {cache: "no-cache"});
     const data = await res.json();
     const sorted = data.sort(sortByProperty("total"));
     return sorted;

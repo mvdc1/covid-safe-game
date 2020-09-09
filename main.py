@@ -115,6 +115,9 @@ def main():
 
 def server():
     os.chdir("assets/web")
+    newl = open("log.txt", "w")
+    old_stderr = sys.stderr
+    sys.stderr = newl
     handler = http.server.SimpleHTTPRequestHandler
     with socketserver.TCPServer(("", 3000), handler) as httpd:
         httpd.serve_forever()

@@ -173,6 +173,10 @@ if __name__ == "__main__":
         else:
             print("Sorry, this program is only compatible on Windows based platforms.")
             sys.exit()
+    except KeyboardInterrupt:
+        print("Closing the program due to the user pressing 'Ctrl + C'.")
+        print("If this was a mistake feel free to launch the game again.")
+        sys.exit()
     except:
         print("Sorry, this program is only compatible on Windows based platforms.")
         sys.exit()

@@ -58,14 +58,14 @@ class MyGame(arcade.Window):
                         scores = json.load(scoresreader)
                     if len(scores) <= 13:
                         with open("assets/web/scores.json", "w") as scoresfile:
-                            scores.append({"time": time_format(lapse), "total": int(end-start)})
+                            scores.append({"time": time_format(lapse), "total": lapse})
                             json.dump(scores, scoresfile, indent=4, sort_keys=True)
                     else:
                         with open("assets/web/scores.json", "w") as scoresfile:
-                            json.dump([{"time": time_format(lapse), "total": int(end-start)}], scoresfile, indent=4, sort_keys=True)
+                            json.dump([{"time": time_format(lapse), "total": lapse}], scoresfile, indent=4, sort_keys=True)
                 else:
                     with open("assets/web/scores.json", "w") as newf:
-                        json.dump([{"time": time_format(lapse), "total": int(end-start)}], newf, indent=4, sort_keys=True)
+                        json.dump([{"time": time_format(lapse), "total": lapse}], newf, indent=4, sort_keys=True)
                     with open("assets/web/scores.json") as scoresreader:
                         scores = json.load(scoresreader)
                 success = True
@@ -116,7 +116,6 @@ def main():
 def server():
     os.chdir("assets/web")
     newl = open("log.txt", "w")
-    old_stderr = sys.stderr
     sys.stderr = newl
     handler = http.server.SimpleHTTPRequestHandler
     with socketserver.TCPServer(("", 3000), handler) as httpd:

@@ -1,4 +1,4 @@
-import random, arcade, sys, json, os, time, http.server, socketserver, threading
+import arcade, sys, json, os, time, http.server, socketserver, threading
 
 SPRITE_SCALING_PLAYER = 0.12
 SCREEN_WIDTH = 600

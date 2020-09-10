@@ -18,15 +18,16 @@ async function getScores() {
         {
             cache: "no-cache"
         });
-        return await res.json().sort(sortByProperty("total"));
+        var data = await res.json();
+        return data.sort(sortByProperty("total"));
     } catch (error) {
-        return "An error has occurred since 'scores.json' is currently unavailable.";
+        return "An error has occurred because 'scores.json' is currently unavailable.";
     }
 }
 
 function callScores() {
     getScores().then(function (x) {
-        if (x == "An error has occurred since 'scores.json' is currently unavailable.") {
+        if(x == "An error has occurred because 'scores.json' is currently unavailable.") {
             return;
         } else {
             var str = "<ul>";

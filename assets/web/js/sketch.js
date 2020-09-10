@@ -9,20 +9,35 @@ function sortByProperty(property){
 }
 
 async function getScores() {
-    const res = await fetch("scores.json?date=" + Date.now(), {headers: {"Cache-Control": "no-cache"}}, {cache: "no-cache"});
-    const data = await res.json();
-    const sorted = data.sort(sortByProperty("total"));
-    return sorted;
+    try {
+        var res = await fetch("scores.json?date=" + Date.now(), {
+            headers: {
+                "Cache-Control": "no-cache"
+            }
+        },
+        {
+            cache: "no-cache"
+        });
+        var data = await res.json();
+        var sorted = data.sort(sortByProperty("total"));
+        return sorted;
+    } catch (error) {
+        return "An error has occurred since 'scores.json' is currently unavailable.";
+    }
 }
 
 function callScores() {
-    getScores().then(x => {
-        var str = "<ul>";
-        for(var i in x) {
-            str += '<li><i class="fas fa-long-arrow-alt-right fa-xs"></i>' + x[i]['time'] + '</li>';
+    getScores().then(function (x) {
+        if (x == "An error has occurred since 'scores.json' is currently unavailable.") {
+            return;
+        } else {
+            var str = "<ul>";
+            for(var i in x) {
+                str += '<li><i class="fas fa-long-arrow-alt-right fa-xs"></i>' + x[i].time + '</li>';
+            }
+            str += "</ul>";
+            document.getElementById("list").innerHTML = str;
         }
-        str += "</ul>";
-        document.getElementById("list").innerHTML = str;
     });
 }
 

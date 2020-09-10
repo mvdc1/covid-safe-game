@@ -18,9 +18,7 @@ async function getScores() {
         {
             cache: "no-cache"
         });
-        var data = await res.json();
-        var sorted = data.sort(sortByProperty("total"));
-        return sorted;
+        return await res.json().sort(sortByProperty("total"));
     } catch (error) {
         return "An error has occurred since 'scores.json' is currently unavailable.";
     }

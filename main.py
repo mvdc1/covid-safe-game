@@ -1,5 +1,6 @@
 import arcade, sys, json, os, time, http.server, socketserver, threading
 
+# Settings for basic layout of the game.
 SPRITE_SCALING_PLAYER = 0.12
 SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 425
@@ -7,6 +8,7 @@ SCREEN_TITLE = "COVID-19 Safe Game"
 endx = range(520, 600)
 endy = range(213-30,213+30)
 
+# Function built to build a completely formatted time string from the seconds in time.time()
 def time_format(sec):
     mins = sec // 60
     sec = sec % 60
@@ -26,6 +28,7 @@ class MyGame(arcade.Window):
         self.score = 0
         self.set_mouse_visible(False)
 
+    # Generation of basic game layout.
     def setup(self):
         self.background = arcade.load_texture("../map.png")
         self.player_list = arcade.SpriteList()
@@ -35,11 +38,13 @@ class MyGame(arcade.Window):
         self.player_list.append(self.player_sprite)
         print("Game has started.")
 
+    # Rendering the game.
     def on_draw(self):
         arcade.start_render()
         arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.background)
         self.player_list.draw()
 
+    # Controlling what happens on different events in the movement of the mouse.
     def on_mouse_motion(self, x, y, dx, dy):
 
         # Move the center of the player sprite to match the mouse x, y
@@ -107,12 +112,14 @@ class MyGame(arcade.Window):
         else:
             return
 
+# Starting all previous functions.
 def main():
     print("Game rendering.")
     window = MyGame()
     window.setup()
     arcade.run()
 
+# Function for server generation in a separate daemon.
 def server():
     os.chdir("assets/web")
     newl = open("server_log.txt", "w")
@@ -161,6 +168,7 @@ if __name__ == "__main__":
                     yellow = ""
                     reset = ""
                     clearlastline = ""
+            # Running the server through a separate thread so the normal script can continue as it should.
             daemon = threading.Thread(name="daemon server", target=server)
             daemon.setDaemon(True)
             daemon.start()
@@ -172,6 +180,7 @@ if __name__ == "__main__":
         else:
             print("Sorry, this program is only compatible on Windows based platforms.")
             sys.exit()
+    # Controlling Ctrl + C events so the user can gracefully close the game.
     except KeyboardInterrupt:
         print("Closing the program due to the user pressing 'Ctrl + C'.")
         print("If this was a mistake feel free to launch the game again.")

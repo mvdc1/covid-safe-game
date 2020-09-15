@@ -1,3 +1,4 @@
+// Function to sort scoreboard in an ascending order.
 function sortByProperty(property){  
     return function(a,b){
         if(a[property] > b[property])  
@@ -8,6 +9,7 @@ function sortByProperty(property){
     };
 }
 
+// Function to update scores.
 async function getScores() {
     try {
         var res = await fetch("scores.json?date=" + Date.now(), {
@@ -25,6 +27,7 @@ async function getScores() {
     }
 }
 
+// Calling the score updating function through a separate function due to asynchronous functions requiring the function to be caught through '.then()'.
 function callScores() {
     getScores().then(function (x) {
         if(x == "An error has occurred because 'scores.json' is currently unavailable.") {
@@ -40,4 +43,5 @@ function callScores() {
     });
 }
 
+// Setting time interval so scores update every 3 seconds.
 var interval = window.setInterval(callScores, 3000);

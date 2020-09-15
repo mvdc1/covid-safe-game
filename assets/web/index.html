@@ -8,14 +8,16 @@
     <script src="https://kit.fontawesome.com/69f78281fb.js" crossorigin="anonymous"></script>
     <title>COVID Safe Game &#9679; Scoreboard</title>
 </head>
-<body onload="callScores()">
+<body onload="callScores()"> <!-- Allowing the body to call the 'callScores()' function so the scores are updated when it's loaded but also every 3 seconds. -->
     <h1 id="main">Scoreboard</h1>
     <p>Below is a list of your most recent timings which have been recorded for you to view your progress.<br>The scores are in an ascending order, showing your best score first.</p>
     <div id="list">
+        <!-- Empty list allowing the javascript to insert the list items for each score which updates on page load and every 3 following seconds. The javascript file is located in 'js/sketch.js'. -->
     </div>
     <div id="desc">
+        <!-- Description on the right hand side of the scoreboard website. -->
         <p id="about">This project was completed by Mathias Saykao, Jaden Perumal, and Mitchell van der Craats.</p>
-        <a href="repo" id="github" target="_blank"><i class="fab fa-github-square"></i>Github Repository</a>
+        <a href="repo" id="github" target="_blank"><i class="fab fa-github-square"></i>Github Repository</a> <!-- This button links to the html file located at 'repo/index.html' which redircts to the GitHub repository. -->
     </div>
     <script src="js/sketch.js"></script>
 </body>
